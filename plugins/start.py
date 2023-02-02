@@ -1,6 +1,6 @@
 """
 Apache License 2.0
-Copyright (c) 2022 @PYRO_BOTZ 
+Copyright (c) 2022
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -30,7 +30,7 @@ import random
 from helper.txt import mr
 from helper.database import db
 from config import START_PIC, FLOOD, ADMIN 
-from config import Config
+
 
 @Client.on_message(filters.private & filters.command(["start"]))
 async def start(client, message):
@@ -72,7 +72,7 @@ async def log_file(client, message):
 
 @Client.on_message(filters.private & (filters.document | filters.audio | filters.video))
 async def rename_start(bot, message, update):
- if update.from_user.id in Config.LAZY_DEVS:
+ if update.from_user.id in ADMIN:
     file = getattr(message, message.media.value)
     filename = file.file_name
     filesize = humanize.naturalsize(file.file_size) 
